@@ -1,0 +1,38 @@
+---
+
+- name: install
+  apt: pkg=shorewall6
+  tags: [ 'shorewall', 'shorewall6' ]
+
+- name: /etc/default/shorewall6
+  template:
+    dest: /etc/default/shorewall6
+    src: default/shorewall6.j2
+    owner: root
+    group: root
+    mode: 0640
+  notify: restart shorewall6
+  tags: [ 'shorewall', 'shorewall6' ]
+
+- name: shorewall6 configuration files
+  template:
+    dest: "/etc/shorewall6/{{ item }}"
+    src: "shorewall6/{{ item }}.j2"
+    owner: root
+    group: root
+    mode: 0640
+  with_items:
+    - shorewall6.conf
+    - params
+    - interfaces
+    - masq
+    - zones
+    - policy
+    - rules
+    - hosts
+  notify: restart shorewall6
+  tags: [ 'shorewall', 'shorewall6' ]
+
+- name: start and enable the shorewall6 service
+  service: name=shorewall6 state=started enabled=yes
+  tags: [ 'shorewall', 'shorewall6' ]

@@ -1,0 +1,49 @@
+Shorewall
+=========
+
+Ansible role which installs and configures shorewall and shorewall6.
+
+Role Variables
+--------------
+
+```yaml
+shorewall: True
+shorewall6: False
+
+shorewall_interfaces:
+  - { zone: net, interface: eth0, options: "dhcp,tcpflags,logmartians,nosmurfs,sourceroute=0" }
+
+shorewall_policies:
+  - { source: "$FW", dest: all, policy: ACCEPT }
+  - { source: net, dest: all, policy: REJECT }
+  - { source: all, dest: all, policy: REJECT, log_level: info }
+
+shorewall_rules:
+  - section: NEW
+    rules:
+    - { action: "Invalid(DROP)", source: net, dest: "$FW", proto: tcp }
+    - { action: ACCEPT, source: net, dest: "$FW", proto: tcp, dest_port: ssh }
+    - { action: ACCEPT, source: net, dest: "$FW", proto: icmp, dest_port: echo-request }
+
+shorewall_zones:
+  - { zone: fw, type: firewall }
+  - { zone: net, type: ipv4 }
+```
+
+Example Playbook
+----------------
+
+    - hosts: all
+      roles:
+         - SphericalElephant.shorewall
+
+License
+-------
+
+MIT
+
+Author Information
+------------------
+
+* Farhad Shahbazi
+* Sascha Biberhofer

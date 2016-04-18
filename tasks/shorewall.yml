@@ -1,0 +1,38 @@
+---
+
+- name: install
+  apt: pkg=shorewall
+  tags: shorewall
+
+- name: /etc/default/shorewall
+  template:
+    dest: /etc/default/shorewall
+    src: default/shorewall.j2
+    owner: root
+    group: root
+    mode: 0640
+  notify: restart shorewall
+  tags: shorewall
+
+- name: shorewall configuration files
+  template:
+    dest: "/etc/shorewall/{{ item }}"
+    src: "shorewall/{{ item }}.j2"
+    owner: root
+    group: root
+    mode: 0640
+  with_items:
+    - shorewall.conf
+    - params
+    - interfaces
+    - masq
+    - zones
+    - policy
+    - rules
+    - hosts
+  notify: restart shorewall
+  tags: shorewall
+
+- name: start and enable the shorewall service
+  service: name=shorewall state=started enabled=yes
+  tags: shorewall

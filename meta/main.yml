@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Farhad Shahbazi
+  description: Install and configure shorewall
+  company: Spherical Elephant GmbH
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - jessie
+    - sid
+    - squeeze
+    - stretch
+    - wheezy
+  galaxy_tags:
+  - firewall
+  - security
+dependencies: []
