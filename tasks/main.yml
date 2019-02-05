@@ -1,8 +1,8 @@
 ---
 - include: shorewall.yml
-  when: shorewall == True
+  when: shorewall
   tags: shorewall
 
 - include: shorewall6.yml
-  when: shorewall6 == True
-  tags: [ 'shorewall', 'shorewall6' ] 
+  when: shorewall6
+  tags: ['shorewall', 'shorewall6'] 

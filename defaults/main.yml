@@ -106,4 +106,3 @@ shorewall6_zones:
     type: firewall
   - zone: net
     type: ipv6
-
