@@ -10,5 +10,5 @@
 ##TYPE                   ZONE    GATEWAY        GATEWAY_ZONE
 
 {% for i in shorewall6_tunnels %}
-{{ i.type }} {{ i.sone }} {{ i.gateway }} {{ i.gateway_zone }}
+{{ i.type }} {{ i.zone }} {{ i.gateway }} {{ i.gateway_zone | default('-') }}
 {% endfor %}
