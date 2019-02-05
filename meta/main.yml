@@ -1,7 +1,7 @@
 galaxy_info:
-  author: Farhad Shahbazi
+  author: Riccardo Casazza, Farhad Shahbazi
   description: Install and configure shorewall
-  company: Spherical Elephant GmbH
+  company: Fraguglia Punto IT
   license: MIT
   min_ansible_version: 2.0
   platforms:

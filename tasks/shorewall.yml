@@ -29,6 +29,7 @@
     - zones
     - policy
     - rules
+    - tunnels
     - hosts
   notify: restart shorewall
   tags: shorewall
