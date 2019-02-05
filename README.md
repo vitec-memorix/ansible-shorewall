@@ -35,7 +35,7 @@ Example Playbook
 
     - hosts: all
       roles:
-         - SphericalElephant.shorewall
+         - ziobombo.shorewall
 
 License
 -------
@@ -45,5 +45,6 @@ MIT
 Author Information
 ------------------
 
+* Riccardo Casazza
 * Farhad Shahbazi
 * Sascha Biberhofer
