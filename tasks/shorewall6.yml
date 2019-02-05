@@ -3,6 +3,8 @@
 - name: install
   apt: pkg=shorewall6
   tags: [ 'shorewall', 'shorewall6' ]
+  register: result
+  until: result is succeeded
 
 - name: /etc/default/shorewall6
   template:

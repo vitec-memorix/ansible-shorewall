@@ -5,4 +5,4 @@
 
 - include: shorewall6.yml
   when: shorewall6
-  tags: ['shorewall', 'shorewall6'] 
+  tags: [ 'shorewall', 'shorewall6' ]
