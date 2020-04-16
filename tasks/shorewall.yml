@@ -34,6 +34,8 @@
   tags: shorewall
 
 - name: Start and enable the Shorewall service
+  async: 30
+  poll: 5
   service: 
     name: shorewall
     state: started
