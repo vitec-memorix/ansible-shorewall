@@ -33,6 +33,8 @@
   tags: [ 'shorewall', 'shorewall6' ]
 
 - name: Start and enable the Shorewall6 service
+  async: 30
+  poll: 5
   service: 
     name: shorewall
     state: started
