@@ -1,7 +1,9 @@
 ---
 
-- name: install
-  apt: pkg=shorewall
+- name: Install Shorewall
+  apt: 
+    name: shorewall
+    state: present
   tags: shorewall
   register: result
   until: result is succeeded
@@ -16,7 +18,7 @@
   notify: restart shorewall
   tags: shorewall
 
-- name: shorewall configuration files
+- name: Shorewall configuration files
   template:
     dest: "/etc/shorewall/{{ item }}"
     src: "shorewall/{{ item }}.j2"
@@ -24,18 +26,16 @@
     group: root
     mode: 0640
   with_items:
-    - shorewall.conf
-    - params
     - interfaces
-    - masq
     - zones
     - policy
     - rules
-    - tunnels
-    - hosts
   notify: restart shorewall
   tags: shorewall
 
-- name: start and enable the shorewall service
-  service: name=shorewall state=started enabled=yes
+- name: Start and enable the Shorewall service
+  service: 
+    name: shorewall
+    state: started
+    enabled: yes
   tags: shorewall

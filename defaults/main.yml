@@ -24,18 +24,6 @@ shorewall6_interfaces:
     interface: eth0
     options: "dhcp,tcpflags,nosmurfs,sourceroute=0"
 
-shorewall_masq: []
-shorewall6_masq: []
-
-shorewall_hosts: []
-shorewall6_hosts: []
-
-shorewall_params: []
-shorewall6_params: []
-
-shorewall_tunnels: []
-shorewall6_tunnels: []
-
 shorewall_policies:
   - source: "$FW"
     dest: all
