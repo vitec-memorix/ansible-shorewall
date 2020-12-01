@@ -8,6 +8,6 @@
 ###########################################################################################################################################
 #ACTION			SOURCE			DEST		PROTO	PORT	IPSEC	MARK	USER	SWITCH	ORIGDEST	PROBABILITY
 
-{% for i in shorewall_snat %}
+{% for i in shorewall6_snat %}
 {{ i.action }} {{ i.source | default('-') }} {{ i.dest | default('-') }} {{ i.proto | default('-') }} {{ i.port | default('-') }} {{ i.ipsec | default('-') }} {{ i.mark | default('-') }} {{ i.user | default('-') }} {{ i.origdest | default('-') }} {{ i.probability | default('-') }}
 {% endfor %}
