@@ -1,7 +1,7 @@
 ---
 
 - name: Install Shorewall6
-  apt: 
+  apt:
     name: shorewall6
   tags: [ 'shorewall', 'shorewall6' ]
   register: result
@@ -29,13 +29,14 @@
     - zones
     - policy
     - rules
+    - snat
   notify: restart shorewall6
   tags: [ 'shorewall', 'shorewall6' ]
 
 - name: Start and enable the Shorewall6 service
   async: 30
   poll: 5
-  service: 
+  service:
     name: shorewall
     state: started
     enabled: yes
