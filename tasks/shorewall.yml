@@ -1,7 +1,7 @@
 ---
 
 - name: Install Shorewall
-  apt: 
+  apt:
     name: shorewall
     state: present
   tags: shorewall
@@ -30,13 +30,14 @@
     - zones
     - policy
     - rules
+    - snat
   notify: restart shorewall
   tags: shorewall
 
 - name: Start and enable the Shorewall service
   async: 30
   poll: 5
-  service: 
+  service:
     name: shorewall
     state: started
     enabled: yes

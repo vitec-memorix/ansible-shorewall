@@ -66,6 +66,8 @@ shorewall_rules:
     - { action: ACCEPT, source: net, dest: "$FW", proto: tcp, dest_port: ssh }
     - { action: ACCEPT, source: net, dest: "$FW", proto: icmp, dest_port: echo-request }
 
+shorewall_snat: []
+
 shorewall6_rules:
   - section: ALL
     rules: []
