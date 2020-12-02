@@ -34,6 +34,16 @@
   notify: restart shorewall
   tags: shorewall
 
+- name: Shorewall main config
+  template:
+    dest: "/etc/shorewall/shorewall.conf"
+    src: "shorewall/shorewall.conf.j2"
+    owner: root
+    group: root
+    mode: 0640
+  notify: restart shorewall
+  tags: shorewall
+
 - name: Start and enable the Shorewall service
   async: 30
   poll: 5

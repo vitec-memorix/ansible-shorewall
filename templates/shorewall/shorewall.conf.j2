@@ -1,0 +1,299 @@
+###############################################################################
+# {{ ansible_managed }}
+#
+#  Shorewall Version 5 -- /etc/shorewall/shorewall.conf
+#
+#  For information about the settings in this file, type "man shorewall.conf"
+#
+#  Manpage also online at http://www.shorewall.net/manpages/shorewall.conf.html
+###############################################################################
+#		       S T A R T U P   E N A B L E D
+###############################################################################
+
+STARTUP_ENABLED={{ shorewall_conf.startup_enabled | default('Yes') }}
+
+###############################################################################
+#			     V E R B O S I T Y
+###############################################################################
+
+VERBOSITY={{ shorewall_conf.verbosity | default('1') }}
+
+###############################################################################
+#			        P A G E R
+###############################################################################
+
+PAGER={{ shorewall_conf.pages | default('') }}
+
+###############################################################################
+#			     F I R E W A L L
+###############################################################################
+
+FIREWALL={{ shorewall_conf.firewall | default('') }}
+
+###############################################################################
+#			       L O G G I N G
+###############################################################################
+
+LOG_LEVEL={{ shorewall_conf.log_level | default('"info"') }}
+
+BLACKLIST_LOG_LEVEL={{ shorewall_conf.blacklist_log_level | default('') }}
+
+INVALID_LOG_LEVEL={{ shorewall_conf.invalid_log_level | default('') }}
+
+LOG_BACKEND={{ shorewall_conf.log_backend | default('') }}
+
+LOG_MARTIANS={{ shorewall_conf.log_martians | default('Yes') }}
+
+LOG_VERBOSITY={{ shorewall_conf.log_verbosity | default('2') }}
+
+LOG_ZONE={{ shorewall_conf.log_zone | default('Both') }}
+
+LOGALLNEW={{ shorewall_conf.logallnew | default('') }}
+
+LOGFILE={{ shorewall_conf.logfile | default('/var/log/messages') }}
+
+LOGFORMAT={{ shorewall_conf.logformat | default('"%s %s "') }}
+
+LOGTAGONLY={{ shorewall_conf.logtagonly | default('No') }}
+
+LOGLIMIT={{ shorewall_conf.loglimit | default('"s:1/sec:10"') }}
+
+MACLIST_LOG_LEVEL={{ shorewall_conf.maclist_log_level | default('"$LOG_LEVEL"') }}
+
+RELATED_LOG_LEVEL={{ shorewall_conf.related_log_level | default('') }}
+
+RPFILTER_LOG_LEVEL={{ shorewall_conf.rpfilter_log_level | default('"$LOG_LEVEL"') }}
+
+SFILTER_LOG_LEVEL={{ shorewall_conf.sfilter_log_level | default('"$LOG_LEVEL"') }}
+
+SMURF_LOG_LEVEL={{ shorewall_conf.smurf_log_level | default('"$LOG_LEVEL"') }}
+
+STARTUP_LOG={{ shorewall_conf.startup_log | default('/var/log/shorewall-init.log') }}
+
+TCP_FLAGS_LOG_LEVEL={{ shorewall_conf.tcp_flags_log_level | default('"$LOG_LEVEL"') }}
+
+UNTRACKED_LOG_LEVEL={{ shorewall_conf.untracked_log_level | default('') }}
+
+###############################################################################
+#	L O C A T I O N	  O F	F I L E S   A N D   D I R E C T O R I E S
+###############################################################################
+
+ARPTABLES={{ shorewall_conf.arptables | default('') }}
+
+CONFIG_PATH={{ shorewall_conf.config_path | default('":${CONFDIR}/shorewall:${SHAREDIR}/shorewall"') }}
+
+GEOIPDIR={{ shorewall_conf.geoipdir | default('/usr/share/xt_geoip/LE') }}
+
+IPTABLES={{ shorewall_conf.iptables | default('') }}
+
+IP={{ shorewall_conf.ip | default('') }}
+
+IPSET={{ shorewall_conf.ipset | default('') }}
+
+LOCKFILE={{ shorewall_conf.lockfile | default('') }}
+
+MODULESDIR={{ shorewall_conf.modulesdir | default('') }}
+
+NFACCT={{ shorewall_conf.nfacct | default('') }}
+
+PATH={{ shorewall_conf.path | default('"/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin"') }}
+
+PERL={{ shorewall_conf.perl | default('/usr/bin/perl') }}
+
+RESTOREFILE={{ shorewall_conf.restorefile | default('restore') }}
+
+SHOREWALL_SHELL={{ shorewall_conf.shorewall_shell | default('/bin/sh') }}
+
+SUBSYSLOCK={{ shorewall_conf.subsyslock | default('""') }}
+
+TC={{ shorewall_conf.tc | default('') }}
+
+###############################################################################
+#		D E F A U L T   A C T I O N S / M A C R O S
+###############################################################################
+
+ACCEPT_DEFAULT={{ shorewall_conf.accept_default | default('"none"') }}
+BLACKLIST_DEFAULT={{ shorewall_conf.blacklist_default | default('"Broadcast(DROP),Multicast(DROP),dropNotSyn:$LOG_LEVEL,dropInvalid:$LOG_LEVEL,DropDNSrep:$LOG_LEVEL"') }}
+DROP_DEFAULT={{ shorewall_conf.drop_default | default('"Broadcast(DROP),Multicast(DROP)"') }}
+NFQUEUE_DEFAULT={{ shorewall_conf.nfqueue_default | default('"none"') }}
+QUEUE_DEFAULT={{ shorewall_conf.queue_default | default('"none"') }}
+REJECT_DEFAULT={{ shorewall_conf.reject_default | default('"Broadcast(DROP),Multicast(DROP)"') }}
+
+###############################################################################
+#			 R S H / R C P	C O M M A N D S
+###############################################################################
+
+RCP_COMMAND={{ shorewall_conf.rcp_command | default("\'scp ${files} ${root}@${system}:${destination}\'") }}
+RSH_COMMAND={{ shorewall_conf.rsh_command | default("\'ssh ${root}@${system} ${command}\'") }}
+
+###############################################################################
+#			F I R E W A L L	  O P T I O N S
+###############################################################################
+
+ACCOUNTING={{ shorewall_conf.accounting | default('Yes') }}
+
+ACCOUNTING_TABLE={{ shorewall_conf.accounting_table | default('filter') }}
+
+ADD_IP_ALIASES={{ shorewall_conf.add_ip_aliases | default('No') }}
+
+ADD_SNAT_ALIASES={{ shorewall_conf.add_sna_aliases | default('No') }}
+
+ADMINISABSENTMINDED={{ shorewall_conf.adminisabsentminded | default('Yes') }}
+
+AUTOCOMMENT={{ shorewall_conf.autocomment | default('Yes') }}
+
+AUTOHELPERS={{ shorewall_conf.autohelpers | default('Yes') }}
+
+AUTOMAKE={{ shorewall_conf.automake | default('Yes') }}
+
+BALANCE_PROVIDERS={{ shorewall_conf.balance_providers | default('No') }}
+
+BASIC_FILTERS={{ shorewall_conf.basic_filters | default('No') }}
+
+BLACKLIST={{ shorewall_conf.blacklist | default('"NEW,INVALID,UNTRACKED"') }}
+
+CLAMPMSS={{ shorewall_conf.clampmss | default('No') }}
+
+CLEAR_TC={{ shorewall_conf.clear_tc | default('Yes') }}
+
+COMPLETE={{ shorewall_conf.complete | default('No') }}
+
+DEFER_DNS_RESOLUTION={{ shorewall_conf.defer_dns_resolution | default('Yes') }}
+
+DELETE_THEN_ADD={{ shorewall_conf.delete_then_add | default('Yes') }}
+
+DETECT_DNAT_IPADDRS={{ shorewall_conf.detect_dnat_ipaddrs | default('No') }}
+
+DISABLE_IPV6={{ shorewall_conf.disable_ipv6 | default('No') }}
+
+DOCKER={{ shorewall_conf.docker | default('No') }}
+
+DONT_LOAD={{ shorewall_conf.dont_load | default('') }}
+
+DYNAMIC_BLACKLIST={{ shorewall_conf.dynamic_blacklist | default('Yes') }}
+
+EXPAND_POLICIES={{ shorewall_conf.expand_policies | default('Yes') }}
+
+EXPORTMODULES={{ shorewall_conf.exportmodules | default('Yes') }}
+
+FASTACCEPT={{ shorewall_conf.fastaccept | default('') }}
+
+FORWARD_CLEAR_MARK={{ shorewall_conf.forward_clear_mark | default('') }}
+
+HELPERS={{ shorewall_conf.helpers | default('') }}
+
+IGNOREUNKNOWNVARIABLES={{ shorewall_conf.ignoreunknownvariables | default('No') }}
+
+IMPLICIT_CONTINUE={{ shorewall_conf.implicit_continue | default('No') }}
+
+IPSET_WARNINGS={{ shorewall_conf.ipset_warnings | default('Yes') }}
+
+IP_FORWARDING={{ shorewall_conf.ip_forwarding | default('Keep') }}
+
+KEEP_RT_TABLES={{ shorewall_conf.keep_rt_tables | default('No') }}
+
+MACLIST_TABLE={{ shorewall_conf.maclist_table | default('filter') }}
+
+MACLIST_TTL={{ shorewall_conf.maclist_ttl | default('') }}
+
+MANGLE_ENABLED={{ shorewall_conf.mangle_enabled | default('Yes') }}
+
+MARK_IN_FORWARD_CHAIN={{ shorewall_conf.mark_in_forward_chain | default('No') }}
+
+MINIUPNPD={{ shorewall_conf.miniupnpd | default('No') }}
+
+MULTICAST={{ shorewall_conf.multicast | default('No') }}
+
+MUTEX_TIMEOUT={{ shorewall_conf.mutex_timeout | default('60') }}
+
+NULL_ROUTE_RFC1918={{ shorewall_conf.null_route_rfc1918 | default('No') }}
+
+OPTIMIZE={{ shorewall_conf.optimize | default('All') }}
+
+OPTIMIZE_ACCOUNTING={{ shorewall_conf.optimize_accounting | default('No') }}
+
+PERL_HASH_SEED={{ shorewall_conf.PERL_HASH_SEED | default('0') }}
+
+REJECT_ACTION={{ shorewall_conf.reject_action | default('') }}
+
+RENAME_COMBINED={{ shorewall_conf.rename_combined | default('Yes') }}
+
+REQUIRE_INTERFACE={{ shorewall_conf.require_interface | default('No') }}
+
+RESTART={{ shorewall_conf.restart | default('restart') }}
+
+RESTORE_DEFAULT_ROUTE={{ shorewall_conf.restore_default_route | default('Yes') }}
+
+RESTORE_ROUTEMARKS={{ shorewall_conf.restore_routemarks | default('Yes') }}
+
+RETAIN_ALIASES={{ shorewall_conf.retain_aliases | default('No') }}
+
+ROUTE_FILTER={{ shorewall_conf.route_filter | default('Yes') }}
+
+SAVE_ARPTABLES={{ shorewall_conf.save_arptables | default('No') }}
+
+SAVE_IPSETS={{ shorewall_conf.save_ipsets | default('No') }}
+
+TC_ENABLED={{ shorewall_conf.tc_enabled | default('Internal') }}
+
+TC_EXPERT={{ shorewall_conf.tc_export | default('No') }}
+
+TC_PRIOMAP={{ shorewall_conf.tc_priomap | default('"2 3 3 3 2 3 1 1 2 2 2 2 2 2 2 2"') }}
+
+TRACK_PROVIDERS={{ shorewall_conf.track_providers | default('Yes') }}
+
+TRACK_RULES={{ shorewall_conf.track_rules | default('No') }}
+
+USE_DEFAULT_RT={{ shorewall_conf.use_default_rt | default('Yes') }}
+
+USE_NFLOG_SIZE={{ shorewall_conf.use_nflog_size | default('No') }}
+
+USE_PHYSICAL_NAMES={{ shorewall_conf.use_physical_names | default('No') }}
+
+USE_RT_NAMES={{ shorewall_conf.use_rt_names | default('No') }}
+
+VERBOSE_MESSAGES={{ shorewall_conf.verbose_messages | default('Yes') }}
+
+WARNOLDCAPVERSION={{ shorewall_conf.warnoldcapversion | default('Yes') }}
+
+WORKAROUNDS={{ shorewall_conf.workarounds | default('No') }}
+
+ZERO_MARKS={{ shorewall_conf.zero_marks | default('No') }}
+
+ZONE2ZONE={{ shorewall_conf.zone2zone | default('-') }}
+
+###############################################################################
+#			P A C K E T   D I S P O S I T I O N
+###############################################################################
+
+BLACKLIST_DISPOSITION={{ shorewall_conf.blacklist_disposition | default('DROP') }}
+
+INVALID_DISPOSITION={{ shorewall_conf.invalid_disposition | default('CONTINUE') }}
+
+MACLIST_DISPOSITION={{ shorewall_conf.maclist_disposition | default('REJECT') }}
+
+RELATED_DISPOSITION={{ shorewall_conf.related_dispostion | default('ACCEPT') }}
+
+RPFILTER_DISPOSITION={{ shorewall_conf.rpfilter_disposition | default('DROP') }}
+
+SMURF_DISPOSITION={{ shorewall_conf.smurf_disposition | default('DROP') }}
+
+SFILTER_DISPOSITION={{ shorewall_conf.sfilter_disposition | default('DROP') }}
+
+TCP_FLAGS_DISPOSITION={{ shorewall_conf.tcp_flags_disposition | default('DROP') }}
+
+UNTRACKED_DISPOSITION={{ shorewall_conf.untracked_disposition | default('CONTINUE') }}
+
+################################################################################
+#			P A C K E T  M A R K  L A Y O U T
+################################################################################
+
+TC_BITS={{ shorewall_conf.tc_bits | default('') }}
+
+PROVIDER_BITS={{ shorewall_conf.provider_bits | default('') }}
+
+PROVIDER_OFFSET={{ shorewall_conf.provider_offset | default('') }}
+
+MASK_BITS={{ shorewall_conf.mask_bits | default('') }}
+
+ZONE_BITS={{ shorewall_conf.zone_bits | default('0') }}

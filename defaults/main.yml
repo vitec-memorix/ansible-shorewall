@@ -68,6 +68,9 @@ shorewall_rules:
 
 shorewall_snat: []
 
+shorewall_conf:
+  accounting: "Yes"
+
 shorewall6_rules:
   - section: ALL
     rules: []
@@ -98,3 +101,6 @@ shorewall6_zones:
     type: ipv6
 
 shorewall6_snat: []
+
+shorewall6_conf:
+  accounting: "Yes"
