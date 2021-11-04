@@ -47,7 +47,7 @@
   async: 30
   poll: 5
   service:
-    name: shorewall
+    name: shorewall6
     state: started
     enabled: yes
   tags: [ 'shorewall', 'shorewall6' ]
