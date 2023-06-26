@@ -1,6 +1,6 @@
 ---
-shorewall: True
-shorewall6: True
+shorewall: true
+shorewall6: true
 
 shorewall_startup: 1
 shorewall6_startup: 1
@@ -62,11 +62,13 @@ shorewall_rules:
     rules: []
   - section: NEW
     rules:
-    - { action: "Invalid(DROP)", source: net, dest: "$FW", proto: tcp }
-    - { action: ACCEPT, source: net, dest: "$FW", proto: tcp, dest_port: ssh }
-    - { action: ACCEPT, source: net, dest: "$FW", proto: icmp, dest_port: echo-request }
+      - { action: "Invalid(DROP)", source: net, dest: "$FW", proto: tcp }
+      - { action: ACCEPT, source: net, dest: "$FW", proto: tcp, dest_port: ssh }
+      - { action: ACCEPT, source: net, dest: "$FW", proto: icmp, dest_port: echo-request }
 
 shorewall_snat: []
+
+shorewall_init: ''
 
 shorewall_conf:
   accounting: "Yes"
@@ -84,9 +86,9 @@ shorewall6_rules:
     rules: []
   - section: NEW
     rules:
-    - { action: "Invalid(DROP)", source: net, dest: "$FW", proto: tcp }
-    - { action: ACCEPT, source: net, dest: "$FW", proto: tcp, dest_port: ssh }
-    - { action: ACCEPT, source: net, dest: "$FW", proto: ipv6-icmp, dest_port: echo-request }
+      - { action: "Invalid(DROP)", source: net, dest: "$FW", proto: tcp }
+      - { action: ACCEPT, source: net, dest: "$FW", proto: tcp, dest_port: ssh }
+      - { action: ACCEPT, source: net, dest: "$FW", proto: ipv6-icmp, dest_port: echo-request }
 
 shorewall_zones:
   - zone: fw
@@ -101,6 +103,8 @@ shorewall6_zones:
     type: ipv6
 
 shorewall6_snat: []
+
+shorewall6_init: ''
 
 shorewall6_conf:
   accounting: "Yes"
