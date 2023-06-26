@@ -68,7 +68,7 @@ shorewall_rules:
 
 shorewall_snat: []
 
-shorewall_init: []
+shorewall_init: ''
 
 shorewall_conf:
   accounting: "Yes"
@@ -104,7 +104,7 @@ shorewall6_zones:
 
 shorewall6_snat: []
 
-shorewall6_init: []
+shorewall6_init: ''
 
 shorewall6_conf:
   accounting: "Yes"
