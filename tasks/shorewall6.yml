@@ -29,6 +29,7 @@
     - policy
     - rules
     - snat
+    - init
   notify: shorewall6_restart
   tags: ['shorewall', 'shorewall6']
 
