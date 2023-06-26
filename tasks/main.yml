@@ -1,8 +1,12 @@
 ---
-- include: shorewall.yml
+- name: Shorewall - Configure Shorewall IPv4
+  ansible.builtin.include_tasks:
+    file: shorewall.yml
   when: shorewall
   tags: shorewall
 
-- include: shorewall6.yml
+- name: Shorewall - Configure Shorewal IPv6
+  ansible.builtin.include_tasks:
+    file: shorewall6.yml
   when: shorewall6
-  tags: [ 'shorewall', 'shorewall6' ]
+  tags: ['shorewall', 'shorewall6']

@@ -1,7 +1,15 @@
 ---
 
-- name: restart shorewall
-  service: name=shorewall state=restarted
+- name: Shorewall - Restart Shorewall
+  ansible.builtin.service:
+    name: shorewall
+    state: restarted
+  become: true
+  listen: shorewall_restart
 
-- name: restart shorewall6
-  service: name=shorewall6 state=restarted
+- name: Shorewall - Restart Shorewall6
+  ansible.builtin.service:
+    name: shorewall6
+    state: restarted
+  become: true
+  listen: shorewall6_restart

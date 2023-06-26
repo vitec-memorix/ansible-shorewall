@@ -1,7 +1,6 @@
 ---
-
 - name: Install Shorewall
-  apt:
+  ansible.builtin.apt:
     name: shorewall
     state: present
   tags: shorewall
@@ -9,46 +8,46 @@
   until: result is succeeded
 
 - name: /etc/default/shorewall
-  template:
+  ansible.builtin.template:
     dest: /etc/default/shorewall
     src: default/shorewall.j2
     owner: root
     group: root
-    mode: 0640
-  notify: restart shorewall
+    mode: '0640'
+  notify: shorewall_restart
   tags: shorewall
 
 - name: Shorewall configuration files
-  template:
+  ansible.builtin.template:
     dest: "/etc/shorewall/{{ item }}"
     src: "shorewall/{{ item }}.j2"
     owner: root
     group: root
-    mode: 0640
+    mode: '0640'
   with_items:
     - interfaces
     - zones
     - policy
     - rules
     - snat
-  notify: restart shorewall
+  notify: shorewall_restart
   tags: shorewall
 
 - name: Shorewall main config
-  template:
+  ansible.builtin.template:
     dest: "/etc/shorewall/shorewall.conf"
     src: "shorewall/shorewall.conf.j2"
     owner: root
     group: root
-    mode: 0640
-  notify: restart shorewall
+    mode: '0640'
+  notify: shorewall_restart
   tags: shorewall
 
 - name: Start and enable the Shorewall service
   async: 30
   poll: 5
-  service:
+  ansible.builtin.service:
     name: shorewall
     state: started
-    enabled: yes
+    enabled: true
   tags: shorewall
