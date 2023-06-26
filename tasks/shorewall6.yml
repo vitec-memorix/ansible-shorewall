@@ -1,7 +1,11 @@
 ---
 - name: Install Shorewall6
   ansible.builtin.apt:
-    name: shorewall6
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - shorewall6
+    - ipset
   tags: ['shorewall', 'shorewall6']
   register: result
   until: result is succeeded
