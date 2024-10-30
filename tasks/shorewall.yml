@@ -50,8 +50,9 @@
 - name: Start and enable the Shorewall service
   async: 30
   poll: 5
-  ansible.builtin.service:
+  ansible.builtin.systemd_service:
     name: shorewall
+    daemon_reload: true
     state: started
     enabled: true
   tags: shorewall
